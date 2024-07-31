@@ -28,8 +28,6 @@ Future<void> main({
   Widget Function(Widget widget)? topLevelBuilder,
   Locale? Function(BuildContext)? getLocale,
 }) async {
-  // Unless you do this, using method channels (like `SharedPreferences` does)
-  // before running `runApp` throws an error.
   WidgetsFlutterBinding.ensureInitialized();
 
   final sharedPreferences = await SharedPreferences.getInstance();
@@ -57,7 +55,6 @@ class _App extends HookConsumerWidget {
   const _App({this.builder, this.getLocale});
 
   final TransitionBuilder? builder;
-
   final Locale? Function(BuildContext)? getLocale;
 
   @override
@@ -66,14 +63,12 @@ class _App extends HookConsumerWidget {
 
     final themeStateNotifier = ref.watch(themeStateNotifierProvider.notifier);
 
-    useEffect(
-      () {
-        themeStateNotifier.loadTheme();
+    useEffect(() {
+      // Use Future.microtask to ensure the effect runs after the widget tree is built
+      Future.microtask(() => themeStateNotifier.loadTheme());
 
-        return null;
-      },
-      [themeStateNotifier],
-    );
+      return null;
+    }, [themeStateNotifier]);
 
     final themeState = ref.watch(themeStateNotifierProvider);
 

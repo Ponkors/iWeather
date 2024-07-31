@@ -17,7 +17,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:material_floating_search_bar/material_floating_search_bar.dart';
+import 'package:material_floating_search_bar_2/material_floating_search_bar_2.dart';
 import 'package:sizer/sizer.dart';
 
 class WeatherScreen extends HookConsumerWidget {
@@ -98,7 +98,7 @@ class WeatherScreen extends HookConsumerWidget {
       body: FloatingSearchAppBar(
         liftOnScrollElevation: 0.0,
         elevation: fullWeather == null ? 2.0 : 0.0,
-        systemOverlayStyle: Theme.of(context).appBarTheme.systemOverlayStyle,
+        // systemOverlayStyle: Theme.of(context).appBarTheme.systemOverlayStyle,
         automaticallyImplyBackButton: false,
         controller: controller,
         progress: fullWeatherState is w.Loading || cityState is c.Loading,

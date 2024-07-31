@@ -36,6 +36,9 @@ class AboutScreen extends StatelessWidget {
             children: [
               const SettingsHeader(
                 title: 'Information',
+                icon: Icon(
+                  Icons.info_outline,
+                ),
               ),
               SettingsTile(
                 title: 'Changelog',

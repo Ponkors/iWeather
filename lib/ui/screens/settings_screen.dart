@@ -58,6 +58,9 @@ class SettingScreen extends ConsumerWidget {
           children: [
             const SettingsHeader(
               title: 'General',
+              icon: Icon(
+                Icons.settings,
+              ),
             ),
             SettingsTile(
               title: 'Unit system',
@@ -82,6 +85,9 @@ class SettingScreen extends ConsumerWidget {
             const SettingsDivider(),
             const SettingsHeader(
               title: 'Interface',
+              icon: Icon(
+                Icons.design_services,
+              ),
             ),
             SettingsTile(
               title: 'Theme',
@@ -100,7 +106,11 @@ class SettingScreen extends ConsumerWidget {
                     throw Error();
                 }
               }(),
-              padding: 80.0,
+              leading: Icon(
+                Icons.color_lens_outlined,
+                color: Theme.of(context).iconTheme.color,
+              ),
+              padding: 24.0,
               onTap: () => showDialog<void>(
                 context: context,
                 builder: (context) => const ThemeDialog(),
@@ -120,14 +130,23 @@ class SettingScreen extends ConsumerWidget {
                     throw Error();
                 }
               }(),
-              padding: 80.0,
+              leading: Icon(
+                Icons.dark_mode_outlined,
+                color: Theme.of(context).iconTheme.color,
+              ),
+              padding: 24.0,
               onTap: () => showDialog<void>(
                 context: context,
                 builder: (context) => const DarkThemeDialog(),
               ),
             ),
             const SettingsDivider(),
-            const SettingsHeader(title: 'API key'),
+            const SettingsHeader(
+              title: 'API key',
+              icon: Icon(
+                Icons.api,
+              ),
+            ),
             SettingsTile(
               title: 'API key',
               subtitle: apiKey.isCustom
@@ -173,6 +192,9 @@ class SettingScreen extends ConsumerWidget {
             const SettingsDivider(),
             const SettingsHeader(
               title: 'About',
+              icon: Icon(
+                Icons.support_agent,
+              ),
             ),
             SettingsTile(
               title: 'About climate',
